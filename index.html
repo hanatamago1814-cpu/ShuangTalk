@@ -13,7 +13,6 @@
       color: #333;
       background: #f9f9f9;
       background-image:
-        /* Traditional Chinese brush stroke style pattern background */
         radial-gradient(circle at 20% 20%, rgba(139,69,19,0.05) 1px, transparent 1px),
         radial-gradient(circle at 80% 80%, rgba(139,69,19,0.05) 1px, transparent 1px);
       background-size: 60px 60px;
@@ -38,9 +37,13 @@
       font-family: "KaiTi", "STKaiti", serif;
       letter-spacing: 2px;
     }
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
     nav a {
       color: white;
-      margin-left: 1.5rem;
       text-decoration: none;
       font-weight: 600;
       font-size: 1rem;
@@ -50,8 +53,19 @@
       color: #f7c548; /* gold highlight */
       text-decoration: underline;
     }
+    #theme-toggle {
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 1rem;
+      font-family: "Noto Sans SC", Arial, sans-serif;
+      letter-spacing: 1px;
+      padding: 0;
+    }
 
-    /* Hero section with soft, textured background */
+    /* Hero section */
     .hero {
       background: linear-gradient(to bottom right, #fceabb, #f8b500);
       color: #6b2e0c;
@@ -101,7 +115,7 @@
       box-shadow: 0 8px 16px rgba(244, 67, 54, 0.8);
     }
 
-    /* Section styling with traditional Chinese textures */
+    /* Sections */
     section {
       max-width: 1000px;
       margin: 3rem auto;
@@ -112,8 +126,7 @@
       border: 1px solid #f3e2c7;
       box-shadow: 1px 1px 10px rgba(183, 138, 95, 0.3);
       border-radius: 15px;
-      background-image:
-        url('https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Chinese_pattern.svg/1200px-Chinese_pattern.svg.png');
+      background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Chinese_pattern.svg/1200px-Chinese_pattern.svg.png');
       background-repeat: repeat;
       background-size: 30px 30px;
       background-position: center;
@@ -166,6 +179,64 @@
         align-items: center;
       }
     }
+
+    /* Dark theme override */
+    .dark-theme {
+      background: #121212 !important;
+      color: #e0e0e0 !important;
+      background-image: none !important;
+    }
+
+    .dark-theme header {
+      background: #1f1f1f !important;
+      color: #ffffff !important;
+      border-bottom-color: #444 !important;
+      box-shadow: none !important;
+    }
+
+    .dark-theme nav a {
+      color: #bbbbbb !important;
+    }
+
+    .dark-theme nav a:hover {
+      color: #f7c548 !important;
+    }
+
+    .dark-theme .hero {
+      background: #1a1a1a !important;
+      color: #ddd !important;
+      background-image: none !important;
+      box-shadow: none !important;
+    }
+
+    .dark-theme .btn-primary {
+      background: #bb86fc !important;
+      color: #1a1a1a !important;
+      box-shadow: 0 6px 12px rgba(187, 134, 252, 0.8) !important;
+    }
+
+    .dark-theme section {
+      background: #222 !important;
+      border-color: #444 !important;
+      color: #ddd !important;
+      box-shadow: 0 0 15px rgba(100, 100, 100, 0.5) !important;
+      background-image: none !important;
+    }
+
+    .dark-theme .feature, 
+    .dark-theme .step, 
+    .dark-theme .testimonial {
+      background: #333 !important;
+      box-shadow: 0 0 10px rgba(187, 134, 252, 0.4) !important;
+      border-color: #555 !important;
+      color: #eee !important;
+    }
+
+    .dark-theme footer {
+      background: #1f1f1f !important;
+      color: #bbb !important;
+      text-shadow: none !important;
+    }
   </style>
 </head>
 <body>
@@ -177,6 +248,7 @@
     <a href="#how-it-works">How It Works</a>
     <a href="#testimonials">Testimonials</a>
     <a href="#download">Download</a>
+    <button id="theme-toggle" aria-label="Toggle dark mode">🌙 Dark Mode</button>
   </nav>
 </header>
 
@@ -249,6 +321,18 @@
 <footer>
   <p>&copy; 2025 ShuangTalk. All rights reserved.</p>
 </footer>
+
+<script>
+  const toggleBtn = document.getElementById('theme-toggle');
+  toggleBtn.addEventListener('click', () => {
+    document.body.classList.toggle('dark-theme');
+    if (document.body.classList.contains('dark-theme')) {
+      toggleBtn.textContent = '☀️ Light Mode';
+    } else {
+      toggleBtn.textContent = '🌙 Dark Mode';
+    }
+  });
+</script>
 
 </body>
 </html>
